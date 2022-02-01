@@ -21,7 +21,7 @@ body {
 }
 
 .contador {
-  color: #ffc600;
+  color: #ffc;
   max-width: 100%;
   font-size: 7rem;
   font-weight: bold;
@@ -29,7 +29,7 @@ body {
 }
 
 .sub-title {
-  color: #fff;
+  color: #ffc;
   letter-spacing: 0.1rem;
   font-size: 1.4rem;
   font-weight: bold;
@@ -39,12 +39,30 @@ body {
 
 #date {
   height: 40px;
-  background-color: #fff;
-  color: #ffc600;
+  background-color: #ffc;
+  color: #5800ff;
   letter-spacing: 0.1rem;
   font-size: 1.4rem;
   font-weight: bold;
   padding: 0 10px;
   border: none;
   border-radius: 4px;
+}
+
+.start {
+  background-color: #ffc;
+  color: #5800ff;
+  font-size: 1.4rem;
+  font-weight: bold;
+  border: 2px solid transparent;
+  border-radius: 4px;
+  margin: 40px;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.start:hover {
+  background-color: #5800ff;
+  color: #ffc;
+  border: 2px solid #ffc;
 }
