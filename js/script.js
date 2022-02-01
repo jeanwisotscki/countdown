@@ -1,12 +1,16 @@
 import Countdown from "./modules/countdown.js";
 import switchDate from "./modules/switch-date.js";
 
-//const daysLeft = new Countdown("24 December 2022 23:59:59 GMT-0300");
 const dateInput = document.querySelector("#date");
+const btnStart = document.querySelector(".start");
 const contador = document.querySelector(".contador");
 
-dateInput.addEventListener("change", () => {
-  getDate(dateInput.value);
+btnStart.addEventListener("click", () => {
+  if (dateInput.value != "") {
+    getDate(dateInput.value);
+  } else {
+    alert("Escolha uma data antes de iniciar!");
+  }
 });
 
 function getDate(data) {
@@ -14,18 +18,24 @@ function getDate(data) {
   const dias = arrayData[0];
   const horas = arrayData[1];
 
-  const count = new Countdown(switchDate(dias) + " " + horas + ":00 GMT-0300");
-  const day = count.total.days;
-  const hour = count.total.hours;
-  const minute = count.total.minutes;
-  const seconds = count.total.seconds;
-
-  //   setInterval(() => {
-  //     contador.innerText = `${day} ${hour}:${minute}:${seconds}`;
-  //   }, 1000);
+  transformDate(dias, horas);
 }
 
-function trataHoras(horas) {}
+function transformDate(dias, horas) {
+  const count = new Countdown(switchDate(dias) + " " + horas + ":00 GMT-0300");
+
+  const days = count.total.days;
+  const hours = count.total.hours;
+  const minutes = count.total.minutes;
+  const seconds = count.total.seconds;
+
+  return {
+    days,
+    hours,
+    minutes,
+    seconds,
+  };
+}
 
 // console.log(daysLeft.days);
 // console.log(daysLeft.hours);
@@ -33,3 +43,9 @@ function trataHoras(horas) {}
 // setInterval(() => {
 //   contador.innerText = `${daysLeft.total.days}:0${daysLeft.total.hours}:${daysLeft.total.minutes}:${daysLeft.total.seconds}`;
 // }, 1000);
+
+//   setInterval(() => {
+//     contador.innerText = `${day} ${hour}:${minute}:${seconds}`;
+//   }, 1000);
+
+//const daysLeft = new Countdown("24 December 2022 23:59:59 GMT-0300");
