@@ -2,13 +2,23 @@ import Countdown from "./modules/countdown.js";
 
 const daysLeft = new Countdown("24 December 2022 23:59:59 GMT-0300");
 const date = document.querySelector("#date");
+
 date.addEventListener("change", () => {
-  //getDate(date.value);
+  getDate(date.value);
   console.log(date.value.replace("-", " ").replace("-", " ").split("T"));
 });
 
 function getDate(data) {
   const arrayData = data.replace("-", " ").replace("-", " ").split("T");
+  const dias = arrayData[0];
+  const horas = arrayData[1];
+
+  trataData(dias);
+  trataHoras(horas);
+}
+
+function trataData(data) {
+  const arrayData = data.replace("-", " ").replace("-", " ").split(" ");
 
   switch (arrayData[1]) {
     case "01":
@@ -63,6 +73,8 @@ function getDate(data) {
   const dataTratada = arrayData[2] + " " + arrayData[1] + " " + arrayData[0];
   console.log(dataTratada);
 }
+
+function trataHoras(horas) {}
 
 // console.log(daysLeft.days);
 // console.log(daysLeft.hours);
