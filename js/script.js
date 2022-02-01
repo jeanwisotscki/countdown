@@ -1,11 +1,12 @@
 import Countdown from "./modules/countdown.js";
+import switchDate from "./modules/switch-date.js";
 
-const daysLeft = new Countdown("24 December 2022 23:59:59 GMT-0300");
-const date = document.querySelector("#date");
+//const daysLeft = new Countdown("24 December 2022 23:59:59 GMT-0300");
+const dateInput = document.querySelector("#date");
+const contador = document.querySelector(".contador");
 
-date.addEventListener("change", () => {
-  getDate(date.value);
-  console.log(date.value.replace("-", " ").replace("-", " ").split("T"));
+dateInput.addEventListener("change", () => {
+  getDate(dateInput.value);
 });
 
 function getDate(data) {
@@ -13,65 +14,15 @@ function getDate(data) {
   const dias = arrayData[0];
   const horas = arrayData[1];
 
-  trataData(dias);
-  trataHoras(horas);
-}
+  const count = new Countdown(switchDate(dias) + " " + horas + ":00 GMT-0300");
+  const day = count.total.days;
+  const hour = count.total.hours;
+  const minute = count.total.minutes;
+  const seconds = count.total.seconds;
 
-function trataData(data) {
-  const arrayData = data.replace("-", " ").replace("-", " ").split(" ");
-
-  switch (arrayData[1]) {
-    case "01":
-      arrayData[1] = "January";
-      break;
-
-    case "02":
-      arrayData[1] = "February";
-      break;
-
-    case "03":
-      arrayData[1] = "March";
-      break;
-
-    case "04":
-      arrayData[1] = "April";
-      break;
-
-    case "05":
-      arrayData[1] = "May";
-      break;
-
-    case "06":
-      arrayData[1] = "June";
-      break;
-
-    case "07":
-      arrayData[1] = "July";
-      break;
-
-    case "08":
-      arrayData[1] = "August";
-      break;
-
-    case "09":
-      arrayData[1] = "September";
-      break;
-
-    case "10":
-      arrayData[1] = "October";
-      break;
-
-    case "11":
-      arrayData[1] = "November";
-      break;
-
-    case "12":
-      arrayData[1] = "December";
-      break;
-  }
-
-  const dataTratada = arrayData[2] + " " + arrayData[1] + " " + arrayData[0];
-  console.log(dataTratada);
+  //   setInterval(() => {
+  //     contador.innerText = `${day} ${hour}:${minute}:${seconds}`;
+  //   }, 1000);
 }
 
 function trataHoras(horas) {}
@@ -80,5 +31,5 @@ function trataHoras(horas) {}
 // console.log(daysLeft.hours);
 // console.log(daysLeft.minutes);
 // setInterval(() => {
-//   console.log(daysLeft.total);
+//   contador.innerText = `${daysLeft.total.days}:0${daysLeft.total.hours}:${daysLeft.total.minutes}:${daysLeft.total.seconds}`;
 // }, 1000);
