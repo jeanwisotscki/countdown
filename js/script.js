@@ -1,51 +1,35 @@
 import Countdown from "./modules/countdown.js";
-import switchDate from "./modules/switch-date.js";
 
+const dias = document.querySelector(".dias");
+const horas = document.querySelector(".horas");
+const minutos = document.querySelector(".minutos");
+const segundos = document.querySelector(".segundos");
 const dateInput = document.querySelector("#date");
 const btnStart = document.querySelector(".start");
-const contador = document.querySelector(".contador");
 
-btnStart.addEventListener("click", () => {
-  if (dateInput.value != "") {
-    getDate(dateInput.value);
-  } else {
-    alert("Escolha uma data antes de iniciar!");
-  }
-});
+btnStart.addEventListener("click", getDate);
 
-function getDate(data) {
-  const arrayData = data.replace("-", " ").replace("-", " ").split("T");
-  const dias = arrayData[0];
-  const horas = arrayData[1];
+function getDate(e) {
+  e.preventDefault();
+  const userDate = new Date(dateInput.value);
+  const count = new Countdown(userDate);
 
-  transformDate(dias, horas);
+  updateCountdown(count);
 }
 
-function transformDate(dias, horas) {
-  const count = new Countdown(switchDate(dias) + " " + horas + ":00 GMT-0300");
-
-  const days = count.total.days;
-  const hours = count.total.hours;
-  const minutes = count.total.minutes;
-  const seconds = count.total.seconds;
-
-  return {
-    days,
-    hours,
-    minutes,
-    seconds,
-  };
+function updateCountdown(count) {
+  setInterval(() => {
+    dias.innerText =
+      count.total.days < 10 ? "0" + count.total.days : count.total.days;
+    horas.innerText =
+      count.total.hours < 10 ? "0" + count.total.hours : count.total.hours;
+    minutos.innerText =
+      count.total.minutes < 10
+        ? "0" + count.total.minutes
+        : count.total.minutes;
+    segundos.innerText =
+      count.total.seconds < 10
+        ? "0" + count.total.seconds
+        : count.total.seconds;
+  }, 1000);
 }
-
-// console.log(daysLeft.days);
-// console.log(daysLeft.hours);
-// console.log(daysLeft.minutes);
-// setInterval(() => {
-//   contador.innerText = `${daysLeft.total.days}:0${daysLeft.total.hours}:${daysLeft.total.minutes}:${daysLeft.total.seconds}`;
-// }, 1000);
-
-//   setInterval(() => {
-//     contador.innerText = `${day} ${hour}:${minute}:${seconds}`;
-//   }, 1000);
-
-//const daysLeft = new Countdown("24 December 2022 23:59:59 GMT-0300");
