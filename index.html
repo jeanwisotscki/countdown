@@ -10,11 +10,33 @@
 </head>
 <body>
     <div class="container">
-        <span class="contador">0 00:00:00</span>
-        <p class="sub-title">dias | horas : minutos : segundos</p>
+        <div class="timer-container">
+            <div class="timer-item">
+                <span class="contador dias">00</span>
+                <p class="sub-title">dias</p>
+            </div>
+    
+            <div class="timer-item horas">
+                <span class="contador">00</span>
+                <p class="sub-title">horas</p>
+            </div>
+    
+            <div class="timer-item minutos">
+                <span class="contador">00</span>
+                <p class="sub-title">minutos</p>
+            </div>
+    
+            <div class="timer-item segundos">
+                <span class="contador">00</span>
+                <p class="sub-title">segundos</p>
+            </div>
+        </div>
 
-        <input type="datetime-local" name="date" id="date">
-        <button class="start">Iniciar</button>
+        <div class="input-container">
+            <input type="datetime-local" name="date" id="date">
+            <button class="start">Iniciar</button>
+        </div>
+
     </div>
 
     <script type="module" src="./js/script.js"></script>
