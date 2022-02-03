@@ -7,18 +7,25 @@ const segundos = document.querySelector(".segundos");
 const dateInput = document.querySelector("#date");
 const btnStart = document.querySelector(".start");
 
-btnStart.addEventListener("click", getDate);
+btnStart.addEventListener("click", initCountdown);
 
-function getDate(e) {
+function initCountdown(e) {
   e.preventDefault();
-  const userDate = new Date(dateInput.value);
-  const count = new Countdown(userDate);
+  if (dateInput.value != "") {
+    const userDate = new Date(dateInput.value);
+    const count = new Countdown(userDate);
+    updateCountdown(count);
 
-  updateCountdown(count);
+    btnStart.addEventListener("click", () => {
+      clearCountdown();
+    });
+  } else {
+    alert("Pro favor, escolha uma data!");
+  }
 }
 
 function updateCountdown(count) {
-  setInterval(() => {
+  const loop = setInterval(() => {
     dias.innerText =
       count.total.days < 10 ? "0" + count.total.days : count.total.days;
     horas.innerText =
@@ -32,4 +39,11 @@ function updateCountdown(count) {
         ? "0" + count.total.seconds
         : count.total.seconds;
   }, 1000);
+}
+
+function clearCountdown() {
+  dias.innerText = "00";
+  horas.innerText = "00";
+  minutos.innerText = "00";
+  segundos.innerText = "00";
 }
