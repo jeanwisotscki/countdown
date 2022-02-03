@@ -6,6 +6,7 @@ const minutos = document.querySelector(".minutos");
 const segundos = document.querySelector(".segundos");
 const dateInput = document.querySelector("#date");
 const btnStart = document.querySelector(".start");
+let intervalo = null;
 
 btnStart.addEventListener("click", initCountdown);
 
@@ -15,17 +16,13 @@ function initCountdown(e) {
     const userDate = new Date(dateInput.value);
     const count = new Countdown(userDate);
     updateCountdown(count);
-
-    btnStart.addEventListener("click", () => {
-      clearCountdown();
-    });
   } else {
     alert("Pro favor, escolha uma data!");
   }
 }
 
 function updateCountdown(count) {
-  const loop = setInterval(() => {
+  intervalo = setInterval(() => {
     dias.innerText =
       count.total.days < 10 ? "0" + count.total.days : count.total.days;
     horas.innerText =
@@ -42,6 +39,7 @@ function updateCountdown(count) {
 }
 
 function clearCountdown() {
+  clearInterval(intervalo);
   dias.innerText = "00";
   horas.innerText = "00";
   minutos.innerText = "00";
