@@ -85,6 +85,20 @@ body {
 
 @media screen and (min-width: 739px) and (max-width: 1114px) {
   .container {
+    width: 100%;
+  }
+  .timer-container {
+    width: 100%;
     border: 1px solid red;
+  }
+}
+
+@media screen and (max-width: 738px) {
+  .container {
+    width: 100%;
+  }
+  .timer-container {
+    width: 100%;
+    border: 1px solid blue;
   }
 }
