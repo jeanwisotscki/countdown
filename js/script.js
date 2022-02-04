@@ -40,6 +40,17 @@ function updateCountdown(count) {
       count.total.seconds < 10
         ? "0" + count.total.seconds
         : count.total.seconds;
+    if (
+      count.total.days <= 0 &&
+      count.total.hours <= 0 &&
+      count.total.minutes <= 0 &&
+      count.total.seconds <= 0
+    ) {
+      clearCountdown();
+      setTimeout(() => {
+        alert("Countdown finalizada!");
+      });
+    }
   }, 1000);
 }
 
