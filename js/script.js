@@ -12,6 +12,11 @@ btnStart.addEventListener("click", initCountdown);
 
 function initCountdown(e) {
   e.preventDefault();
+  if (btnStart.classList.contains("active")) {
+    clearCountdown();
+    btnStart.classList.remove("active");
+  }
+  btnStart.classList.add("active");
   if (dateInput.value != "") {
     const userDate = new Date(dateInput.value);
     const count = new Countdown(userDate);
