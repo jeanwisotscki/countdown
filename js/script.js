@@ -40,6 +40,7 @@ function updateCountdown(count) {
       count.total.seconds < 10
         ? "0" + count.total.seconds
         : count.total.seconds;
+
     if (
       count.total.days <= 0 &&
       count.total.hours <= 0 &&
