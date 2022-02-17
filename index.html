@@ -1,44 +1,43 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Countdown</title>
 
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
     <div class="container">
-        <div class="timer-container">
-            <div id="dias" class="timer-item">
-                <span class="contador dias">00</span>
-                <p class="sub-title">dias</p>
-            </div>
-    
-            <div class="timer-item">
-                <span class="contador horas">00</span>
-                <p class="sub-title">horas</p>
-            </div>
-    
-            <div class="timer-item">
-                <span class="contador minutos">00</span>
-                <p class="sub-title">minutos</p>
-            </div>
-    
-            <div class="timer-item">
-                <span class="contador segundos">00</span>
-                <p class="sub-title">segundos</p>
-            </div>
+      <div class="timer-container">
+        <div id="dias" class="timer-item">
+          <span class="contador dias">00</span>
+          <p class="sub-title">dias</p>
         </div>
 
-        <div class="input-container">
-            <input type="datetime-local" name="date" id="date">
-            <button class="start">Iniciar</button>
+        <div class="timer-item">
+          <span class="contador horas">00</span>
+          <p class="sub-title">horas</p>
         </div>
 
+        <div class="timer-item">
+          <span class="contador minutos">00</span>
+          <p class="sub-title">minutos</p>
+        </div>
+
+        <div class="timer-item">
+          <span class="contador segundos">00</span>
+          <p class="sub-title">segundos</p>
+        </div>
+      </div>
+
+      <div class="input-container">
+        <input type="datetime-local" name="date" id="date" />
+        <button class="start">Iniciar</button>
+      </div>
     </div>
 
     <script type="module" src="./js/script.js"></script>
-</body>
+  </body>
 </html>

@@ -18,11 +18,12 @@ function initCountdown(e) {
   }
   btnStart.classList.add("active");
   if (dateInput.value != "") {
+    console.log(dateInput.value);
     const userDate = new Date(dateInput.value);
     const count = new Countdown(userDate);
     updateCountdown(count);
   } else {
-    alert("Pro favor, escolha uma data!");
+    alert("Por favor, escolha uma data válida!");
   }
 }
 
