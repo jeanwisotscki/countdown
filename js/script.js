@@ -8,19 +8,27 @@ const dateInput = document.querySelector("#date");
 const btnStart = document.querySelector(".start");
 let intervalo = null;
 
+const regexpDateInput = /(\d{4})-(\d{2})-(\d{2}\w{1})(\d{2}:\d{2})/g;
+
 btnStart.addEventListener("click", initCountdown);
 
 function initCountdown(e) {
   e.preventDefault();
+
   if (btnStart.classList.contains("active")) {
     clearCountdown();
     btnStart.classList.remove("active");
   }
   btnStart.classList.add("active");
+
   if (dateInput.value != "") {
-    console.log(dateInput.value);
+    const dataRegex = dateInput.value.match(regexpDateInput);
+    dateInput.value = dataRegex[0];
     const userDate = new Date(dateInput.value);
     const count = new Countdown(userDate);
+
+    console.log(dateInput.value);
+
     updateCountdown(count);
   } else {
     alert("Por favor, escolha uma data válida!");
