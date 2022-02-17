@@ -1,7 +1,12 @@
 import Countdown from "./modules/countdown.js";
 
-const dataAtual = new Date();
-localStorage.setItem("clientActualDate", dataAtual);
+const userAccessDate = new Date();
+localStorage.setItem("clientAccessDate", userAccessDate);
+
+/*
+  if local storage clientInputDate
+  countdown recebe clientInputDate
+*/
 
 const dias = document.querySelector(".dias");
 const horas = document.querySelector(".horas");
@@ -10,8 +15,6 @@ const segundos = document.querySelector(".segundos");
 const dateInput = document.querySelector("#date");
 const btnStart = document.querySelector(".start");
 let intervalo = null;
-
-console.log(dataAtual);
 
 const regexpDateInput = /(\d{4})-(\d{2})-(\d{2}\w{1})(\d{2}:\d{2})/g;
 
@@ -29,16 +32,15 @@ function initCountdown(e) {
   if (dateInput.value != "") {
     const dataRegex = dateInput.value.match(regexpDateInput);
     dateInput.value = dataRegex[0];
-    const userDate = new Date(dateInput.value);
-    const count = new Countdown(userDate);
+
+    const userInputDate = new Date(dateInput.value);
+    const count = new Countdown(userInputDate);
 
     localStorage.setItem("clientInputDate", dateInput.value);
 
-    console.log(count);
-
     updateCountdown(count);
   } else {
-    alert("Por favor, escolha uma data válida!");
+    alert("Por favor, escolha uma data!");
   }
 }
 
