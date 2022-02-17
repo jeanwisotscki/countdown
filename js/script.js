@@ -1,5 +1,8 @@
 import Countdown from "./modules/countdown.js";
 
+const dataAtual = new Date();
+localStorage.setItem("clientActualDate", dataAtual);
+
 const dias = document.querySelector(".dias");
 const horas = document.querySelector(".horas");
 const minutos = document.querySelector(".minutos");
@@ -7,6 +10,8 @@ const segundos = document.querySelector(".segundos");
 const dateInput = document.querySelector("#date");
 const btnStart = document.querySelector(".start");
 let intervalo = null;
+
+console.log(dataAtual);
 
 const regexpDateInput = /(\d{4})-(\d{2})-(\d{2}\w{1})(\d{2}:\d{2})/g;
 
@@ -27,7 +32,9 @@ function initCountdown(e) {
     const userDate = new Date(dateInput.value);
     const count = new Countdown(userDate);
 
-    console.log(dateInput.value);
+    localStorage.setItem("clientInputDate", dateInput.value);
+
+    console.log(count);
 
     updateCountdown(count);
   } else {
