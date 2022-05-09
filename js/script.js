@@ -18,8 +18,6 @@ let intervalo = null;
 
 const regexpDateInput = /(\d{4})-(\d{2})-(\d{2}\w{1})(\d{2}:\d{2})/g;
 
-btnStart.addEventListener("click", initCountdown);
-
 function initCountdown(e) {
   e.preventDefault();
 
@@ -36,12 +34,15 @@ function initCountdown(e) {
     const userInputDate = new Date(dateInput.value);
     const count = new Countdown(userInputDate);
 
-    localStorage.setItem("clientInputDate", dateInput.value);
-
+    updateLocalStorage(dateInput.value);
     updateCountdown(count);
   } else {
     alert("Por favor, escolha uma data!");
   }
+}
+
+function updateLocalStorage(userDate) {
+  localStorage.setItem("userInputDate", userDate);
 }
 
 function updateCountdown(count) {
@@ -80,3 +81,5 @@ function clearCountdown() {
   minutos.innerText = "00";
   segundos.innerText = "00";
 }
+
+btnStart.addEventListener("click", initCountdown);

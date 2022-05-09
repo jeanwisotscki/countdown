@@ -4,7 +4,7 @@
 
 ### Focos de estudo: regex, armazenamento em localStorage e o uso de classes.
 
-Confira o resultado clicando [aqui](https://jeanwisotscki.github.io/countdown/) (Dica: control + click para abrir o link em uma nova guia. 😉)
+Confira o resultado [clicando aqui](https://jeanwisotscki.github.io/countdown/) (Dica: control + click para abrir o link em uma nova guia. 😉)
 
 # Design
 
