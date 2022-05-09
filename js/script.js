@@ -1,13 +1,5 @@
 import Countdown from "./modules/countdown.js";
 
-const userAccessDate = new Date();
-localStorage.setItem("clientAccessDate", userAccessDate);
-
-/*
-  if local storage clientInputDate
-  countdown recebe clientInputDate
-*/
-
 const dias = document.querySelector(".dias");
 const horas = document.querySelector(".horas");
 const minutos = document.querySelector(".minutos");
