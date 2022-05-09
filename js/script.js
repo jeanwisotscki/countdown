@@ -15,6 +15,18 @@ const segundos = document.querySelector(".segundos");
 const dateInput = document.querySelector("#date");
 const btnStart = document.querySelector(".start");
 let intervalo = null;
+let userInputDate;
+
+window.onload = () => {
+  clearCountdown();
+  const local = localStorage.getItem("userInputDate");
+  if (local) {
+    userInputDate = new Date(local);
+    const count = new Countdown(userInputDate);
+
+    updateCountdown(count);
+  }
+};
 
 const regexpDateInput = /(\d{4})-(\d{2})-(\d{2}\w{1})(\d{2}:\d{2})/g;
 
@@ -31,7 +43,7 @@ function initCountdown(e) {
     const dataRegex = dateInput.value.match(regexpDateInput);
     dateInput.value = dataRegex[0];
 
-    const userInputDate = new Date(dateInput.value);
+    userInputDate = new Date(dateInput.value);
     const count = new Countdown(userInputDate);
 
     updateLocalStorage(dateInput.value);
