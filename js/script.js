@@ -32,6 +32,7 @@ const regexpDateInput = /(\d{4})-(\d{2})-(\d{2}\w{1})(\d{2}:\d{2})/g;
 
 function initCountdown(e) {
   e.preventDefault();
+  clearCountdown();
 
   if (btnStart.classList.contains("active")) {
     clearCountdown();
