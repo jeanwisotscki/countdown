@@ -10,9 +10,11 @@ const btnStart = document.querySelector(".start");
 let intervalo = null;
 let userInputDate;
 
+// usa a data do localStorage, caso já exista
 window.onload = () => {
   clearCountdown();
   const local = localStorage.getItem("userInputDate");
+
   if (local) {
     userInputDate = new Date(local);
     const count = new Countdown(userInputDate);
@@ -21,16 +23,12 @@ window.onload = () => {
   }
 };
 
+// inicia o countdown (somente com o clique no botão)
 function initCountdown(e) {
   e.preventDefault();
   clearCountdown();
 
-  if (btnStart.classList.contains("active")) {
-    clearCountdown();
-    btnStart.classList.remove("active");
-  }
-  btnStart.classList.add("active");
-
+  // verifica se o input está vazio, senão executa os comandos
   if (dateInput.value != "") {
     const dataRegex = dateInput.value.match(regexpDateInput);
     dateInput.value = dataRegex[0];
@@ -45,10 +43,12 @@ function initCountdown(e) {
   }
 }
 
+// adiciona a data ao localStorage
 function updateLocalStorage(userDate) {
   localStorage.setItem("userInputDate", userDate);
 }
 
+// atualiza os números do countdown
 function updateCountdown(count) {
   intervalo = setInterval(() => {
     dias.innerText =
@@ -78,6 +78,7 @@ function updateCountdown(count) {
   }, 1000);
 }
 
+// para o intervalo e zera os números do countdown
 function clearCountdown() {
   clearInterval(intervalo);
   dias.innerText = "00";
