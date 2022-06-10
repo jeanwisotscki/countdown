@@ -6,10 +6,9 @@
 
 Confira o resultado [clicando aqui](https://jeanwisotscki.github.io/countdown/) (Dica: control + click para abrir o link em uma nova guia. 😉)
 
-# Design
+# Preview do projeto
 
-![Desktop](./desktop.png)
-![Mobile](./mobile.png)
+![app](./src/assets/countdown.gif)
 
 # Techs usadas no desenvolvimento
 
